@@ -1,3 +1,6 @@
-# Java
-Some of my projects in java
-<img align="left" alt="java" src="https://www.ifpe.edu.br/campus/palmares/noticias/divulgado-resultado-do-curso-de-extensao-em-java/javalogo.png" />
+# Java <img align="left" width="58px" alt="java" src="https://cdn-icons-png.flaticon.com/512/226/226777.png" /> </br>
+
+- Some of my projects in java
+- Just learning
+
+**© [Doutorwar](https://github.com/Doutorwar)**
