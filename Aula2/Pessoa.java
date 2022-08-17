@@ -10,4 +10,12 @@ public class Pessoa {
     Endereco endereco;
     Date dataNascimento;
     
+    public Pessoa (String nomeParametro) {
+        this.nome= nomeParametro;
+        
+    }
+    
+    public Pessoa() {
+        
+    }
 }
