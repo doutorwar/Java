@@ -1,12 +1,9 @@
-
 package com.mycompany.colecoesaula3;
 
 import java.util.*;
 
-
 public class Principal {
 
-    
     public static void main(String[] args) {
         
         List lista1 = new ArrayList();
@@ -46,9 +43,7 @@ public class Principal {
         
         System.out.println(lista3.get("chave2"));
       //  System.out.println(lista2.indexOf("item1"));
-        
-        
-        
+         
     }
     
 }
