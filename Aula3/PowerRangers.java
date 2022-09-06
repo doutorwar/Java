@@ -22,23 +22,14 @@ public abstract class PowerRangers {
         this.zord = x;
     }
 
-    /**
-     * @return the cor
-     */
     public String getCor() {
         return cor;
     }
 
-    /**
-     * @return the armamento
-     */
     public String getArmamento() {
         return armamento;
     }
 
-    /**
-     * @return the zord
-     */
     public String getZord() {
         return zord;
     }
