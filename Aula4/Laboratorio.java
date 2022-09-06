@@ -1,15 +1,12 @@
-
 package com.mycompany.colecoesaula3;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Laboratorio {
     
     private String              identificacao;
     private List<Aluno>         alunos;
-    
     
     public Laboratorio(String ident){
         this.identificacao = ident;
@@ -23,9 +20,5 @@ public class Laboratorio {
     public List exibirAlunos(){
         return alunos;
     }
-    
-    
-    
-    
     
 }
