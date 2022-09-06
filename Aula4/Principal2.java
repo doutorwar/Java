@@ -1,10 +1,7 @@
-
 package com.mycompany.colecoesaula3;
-
 
 public class Principal2 {
 
-    
     public static void main(String[] args) {
         Aluno aluno1, aluno2, aluno3, aluno4, aluno5;
         
@@ -23,8 +20,7 @@ public class Principal2 {
          info2.alocarAlunos(aluno5);
          
          System.out.println(info2.exibirAlunos());
-         
-         
+          
     }
     
 }
