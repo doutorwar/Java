@@ -1,6 +1,4 @@
-
 package com.mycompany.colecoesaula3;
-
 
 public class Aluno extends Pessoa{
     
@@ -18,15 +16,10 @@ public class Aluno extends Pessoa{
     @Override
     public String toString() {
         return this.getNome()+ " matricula : " + this.matricula; //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-    
+    }    
     
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
-    
-    
     
 }
