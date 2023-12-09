@@ -3,7 +3,7 @@
 ---
 
 - Some of my projects in java
-- Just learning
+- Still learning
 
 ---
 
