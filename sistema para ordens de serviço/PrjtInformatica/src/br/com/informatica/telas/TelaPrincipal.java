@@ -68,10 +68,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/informatica/icones/logo-computador.jpg"))); // NOI18N
 
-        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblUsuario.setText("Usuário");
 
-        lblData.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblData.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblData.setText("Data");
 
         menCadastroOs.setText("Cadastro");
@@ -221,7 +221,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblUsuario;
+    public static javax.swing.JLabel lblUsuario;
     private javax.swing.JMenu menCadastroOs;
     public static javax.swing.JMenuItem menCadastroUsuarios;
     private javax.swing.JMenu menOpcoes;

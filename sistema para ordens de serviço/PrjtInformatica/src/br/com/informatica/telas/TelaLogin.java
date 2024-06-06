@@ -7,6 +7,7 @@ package br.com.informatica.telas;
 
 import java.sql.*;
 import br.com.informatica.dal.Conexao;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +19,7 @@ public class TelaLogin extends javax.swing.JFrame {
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
+
     public void logar() {
         String sql = "select * from tbusuarios where login=? and senha=?";
         try {
@@ -33,14 +34,30 @@ public class TelaLogin extends javax.swing.JFrame {
 
             //se existir usuario e senha
             if (rs.next()) {
-                TelaPrincipal principal = new TelaPrincipal();
-                principal.setVisible(true);
-                this.dispose();
-                conexao.close();
+                //verifica o conteudo da coluna perfil do banco de dados(tbusuario)
+                String perfil = rs.getString(6);
+                //System.out.println(perfil);
+                //a estrutura abaixo faz o tratamento do perfil do usuario
+                if (perfil.equals("admin")) {
+                    TelaPrincipal principal = new TelaPrincipal();
+                    principal.setVisible(true);
+                    TelaPrincipal.menCadastroUsuarios.setEnabled(true);
+                    TelaPrincipal.menRelatorio.setEnabled(true);
+                    TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                    TelaPrincipal.lblUsuario.setForeground(Color.red);
+                    this.dispose();
+                    conexao.close();
+                } else {
+                    TelaPrincipal principal = new TelaPrincipal();
+                    principal.setVisible(true);
+                    TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                    this.dispose();
+                    conexao.close();
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)");
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
