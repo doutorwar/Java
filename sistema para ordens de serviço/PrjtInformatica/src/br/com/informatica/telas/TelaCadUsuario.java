@@ -58,7 +58,7 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
             pst.setString(5, txtUsuariosSenha.getText());
             pst.setString(6, cboxUsuariosPerfil.getSelectedItem().toString());
             // validaçao campos obrigatorios
-            if ((txtUsuariosId.getText().isEmpty())||(txtUsuariosNome.getText().isEmpty())||(txtUsuariosLogin.getText().isEmpty())||(txtUsuariosSenha.getText().isEmpty())) {
+            if ((txtUsuariosId.getText().isEmpty()) || (txtUsuariosNome.getText().isEmpty()) || (txtUsuariosLogin.getText().isEmpty()) || (txtUsuariosSenha.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatorios");
             } else {
                 //update na tabela com os dados acima
@@ -75,6 +75,60 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    private void alterar() {
+        String sql = "update tbusuarios set usuario=?,fone=?,login=?,senha=?,perfil=? where iduser=?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, txtUsuariosNome.getText());
+            pst.setString(2, txtUsuariosTelefone.getText());
+            pst.setString(3, txtUsuariosLogin.getText());
+            pst.setString(4, txtUsuariosSenha.getText());
+            pst.setString(5, cboxUsuariosPerfil.getSelectedItem().toString());
+            pst.setString(6, txtUsuariosId.getText());
+
+            if ((txtUsuariosId.getText().isEmpty()) || (txtUsuariosNome.getText().isEmpty()) || (txtUsuariosLogin.getText().isEmpty()) || (txtUsuariosSenha.getText().isEmpty())) {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatorios");
+            } else {
+                //update na tabela com os dados acima
+                int adicionado = pst.executeUpdate();
+                if (adicionado > 0) {
+                    JOptionPane.showMessageDialog(null, "Dados do usuário alterados com sucesso");
+                    //limpa os campos
+                    txtUsuariosId.setText(null);
+                    txtUsuariosNome.setText(null);
+                    txtUsuariosTelefone.setText(null);
+                    txtUsuariosLogin.setText(null);
+                    txtUsuariosSenha.setText(null);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    private void remover() {
+        //confirma a remoçao
+        int confirmar = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este usuario?","Atenção",JOptionPane.YES_NO_OPTION);
+        if (confirmar == JOptionPane.YES_OPTION){
+            String sql = "delete from tbusuarios where iduser=?";
+            try {
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtUsuariosId.getText());
+                int apagado = pst.executeUpdate();
+                if(apagado>0){
+                    JOptionPane.showMessageDialog(null, "Usuário apagado com sucesso");
+                    txtUsuariosId.setText(null);
+                    txtUsuariosNome.setText(null);
+                    txtUsuariosTelefone.setText(null);
+                    txtUsuariosLogin.setText(null);
+                    txtUsuariosSenha.setText(null);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
         }
     }
 
@@ -149,11 +203,21 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
         btnUsuariosDelete.setToolTipText("Remover");
         btnUsuariosDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuariosDelete.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnUsuariosDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosDeleteActionPerformed(evt);
+            }
+        });
 
         btnUsuariosEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/informatica/icones/update.png"))); // NOI18N
         btnUsuariosEditar.setToolTipText("Editar");
         btnUsuariosEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuariosEditar.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnUsuariosEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosEditarActionPerformed(evt);
+            }
+        });
 
         btnUsuariosPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/informatica/icones/lupa20px.png"))); // NOI18N
         btnUsuariosPesquisar.setToolTipText("Pesquisar");
@@ -270,6 +334,14 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
         //apaga texto do ID
         txtUsuariosId.setText(null);
     }//GEN-LAST:event_btnUsuariosApagarIDActionPerformed
+
+    private void btnUsuariosEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosEditarActionPerformed
+        alterar();
+    }//GEN-LAST:event_btnUsuariosEditarActionPerformed
+
+    private void btnUsuariosDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosDeleteActionPerformed
+        remover();
+    }//GEN-LAST:event_btnUsuariosDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
